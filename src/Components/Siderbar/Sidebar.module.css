@@ -1,0 +1,15 @@
+.sidebar {
+    grid-area: s;
+    background-color: lightgreen;
+}
+
+.side_item {
+    padding: 5px;
+}
+
+.nav_item {
+    text-decoration: none;
+    font-size: 18px;
+    padding: 5px;
+    color: darkblue;
+}

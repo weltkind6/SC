@@ -1,0 +1,19 @@
+.dialogs_wrapper {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+.users {
+    background-color: cornsilk;
+}
+.messages {
+    background-color: firebrick;
+}
+
+.ava {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.user_block {
+    display: flex;
+}

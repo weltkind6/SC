@@ -17,11 +17,11 @@ let state = {
     },
     messagePage: {
         messages: [
-                {id: 1, message: 'Hello guys! How its going?'},
-                {id: 2, message: 'Hi! I am Ok.'},
-                {id: 3, message: 'I want more money!'},
-                {id: 4, message: 'I would rather to stay home\''},
-                {id: 5, message: 'I am fine..'},
+            {id: 1, message: 'Hello guys! How its going?'},
+            {id: 2, message: 'Hi! I am Ok.'},
+            {id: 3, message: 'I want more money!'},
+            {id: 4, message: 'I would rather to stay home\''},
+            {id: 5, message: 'I am fine..'},
         ],
         dialogsData: [
             {id: 1, name: 'Ilay', img: <img src={ava1} alt="avatar" className={classes.ava}/>},
@@ -30,7 +30,12 @@ let state = {
             {id: 4, name: 'Ivych', img: <img src={ava4} alt="avatar" className={classes.ava}/>},
             {id: 5, name: 'Toryn', img: <img src={ava5} alt="avatar" className={classes.ava}/>},
         ]
-    }
+    },
+    friendz: [
+        {id: 1, name: 'Curly', ava: <img src={ava5} alt="avatar" className={classes.ava}/>},
+        {id: 1, name: 'Kolyan', ava: <img src={ava3} alt="avatar" className={classes.ava}/>},
+        {id: 1, name: 'Alex', ava: <img src={ava4} alt="avatar" className={classes.ava}/>},
+    ]
 }
 // Это типа JSON формат получается
 

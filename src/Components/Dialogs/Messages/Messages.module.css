@@ -2,3 +2,10 @@
     color: #000;
     font-size: 18px;
 }
+.users_wrapper {
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: cornsilk;
+}

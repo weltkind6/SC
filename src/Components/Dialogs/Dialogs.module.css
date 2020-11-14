@@ -4,10 +4,11 @@
 }
 .users {
     background-color: cornsilk;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
-.messages {
-    background-color: firebrick;
-}
+
 
 .ava {
     width: 70px;
@@ -15,5 +16,7 @@
     border-radius: 50%;
 }
 .user_block {
-    display: flex;
+    height: 110px;
+    padding: 10px;
+    outline: 1px solid black;
 }

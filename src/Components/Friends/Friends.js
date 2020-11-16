@@ -2,7 +2,6 @@ import React from 'react'
 import classes from './Friends.module.css'
 
 const Friends = (props) => {
-
     let friendsMassive = props.state.friendz.map(f => <FriendsItem friend={f.name} ava={f.ava}/>)
 
     return (

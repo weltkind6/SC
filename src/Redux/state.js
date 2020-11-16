@@ -37,6 +37,17 @@ let state = {
         {id: 1, name: 'Alex', ava: <img src={ava4} alt="avatar" className={classes.ava}/>},
     ]
 }
+
+export let addPost = (postMessage) => {
+    let newPost = {
+        id: 1,
+        post: postMessage,
+        likesCount: '3'
+    }
+    state.profilePage.postData.push(newPost)
+}
+
+
 // Это типа JSON формат получается
 
 export default state

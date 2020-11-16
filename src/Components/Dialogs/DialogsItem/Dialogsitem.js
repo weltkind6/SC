@@ -1,8 +1,7 @@
 import React from 'react'
 import {NavLink} from "react-router-dom";
 import classes from './Dialogsitem.module.css'
-import ava1 from "../../../img/ava1.png";
-import ava2 from "../../../img/freckle.png";
+
 
 
 const Dialogsitem = (props) => {

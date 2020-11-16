@@ -6,6 +6,6 @@
     height: 130px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     background-color: cornsilk;
+    border-bottom: 1px solid #000000;
 }

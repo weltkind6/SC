@@ -6,6 +6,8 @@ import ava4 from '../../img/enot.jpg'
 import ava3 from '../../img/blue.jpg'
 
 const Sidebar = (props) => {
+
+
     return (
         <div className={classes.sidebar}>
             <div className={classes.side_item}><NavLink to='/profile' className={classes.nav_item}>Profile</NavLink>

@@ -4,6 +4,7 @@ import ava2 from '../img/freckle.png'
 import ava3 from '../img/blue.jpg'
 import ava4 from '../img/enot.jpg'
 import ava5 from '../img/chika.jpg'
+import {rerenderEntireTree} from "../render";
 
 let state = {
     profilePage: {
@@ -37,6 +38,18 @@ let state = {
         {id: 1, name: 'Alex', ava: <img src={ava4} alt="avatar" className={classes.ava}/>},
     ]
 }
+
+export let addPost = (postMessage) => {
+    let newPost = {
+        id: 1,
+        post: postMessage,
+        likesCount: '3'
+    }
+    state.profilePage.postData.push(newPost)
+    rerenderEntireTree(state)
+}
+
+
 // Это типа JSON формат получается
 
 export default state

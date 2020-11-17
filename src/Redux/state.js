@@ -4,6 +4,7 @@ import ava2 from '../img/freckle.png'
 import ava3 from '../img/blue.jpg'
 import ava4 from '../img/enot.jpg'
 import ava5 from '../img/chika.jpg'
+import {rerenderEntireTree} from "../render";
 
 let state = {
     profilePage: {
@@ -45,6 +46,7 @@ export let addPost = (postMessage) => {
         likesCount: '3'
     }
     state.profilePage.postData.push(newPost)
+    rerenderEntireTree(state)
 }
 
 

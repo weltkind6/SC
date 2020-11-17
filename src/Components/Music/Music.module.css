@@ -1,0 +1,11 @@
+
+.music_wrapper {
+    padding: 1em;
+}
+.song {
+    display: flex;
+    align-items: center;
+}
+h5 {
+    margin-left: 1em;
+}

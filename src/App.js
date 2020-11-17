@@ -5,7 +5,7 @@ import Sidebar from "./Components/Siderbar/Sidebar";
 import Profile from "./Components/Profile/Profile";
 import Dialogs from "./Components/Dialogs/Dialogs";
 import Friends from "./Components/Friends/Friends";
-import {addPost} from "./Redux/state";
+import Music from "./Components/Music/Music";
 
 
 const App = (props) => {
@@ -17,6 +17,7 @@ const App = (props) => {
                     <Route path='/profile' render={() => <Profile state={props.appState.profilePage} addPost={props.addPost}/>}/>
                     <Route path='/messages' render={() => <Dialogs state={props.appState.messagePage}/>} />
                     <Route path='/friends' render={() => <Friends state={props.appState}/>} />
+                    <Route path='/music' render={() => <Music/>}/>
                 </div>
             </div>
     );

@@ -14,7 +14,9 @@ let state = {
             {id: 3, post: 'Hello! This is my third post!', likesCount: '14'},
             {id: 4, post: 'Hello! This is my four post!', likesCount: '15'},
             {id: 5, post: 'Hello! This is my fifth post!', likesCount: '18'},
-        ]
+        ],
+        newPostText: ''
+
     },
     messagePage: {
         messages: [
@@ -39,16 +41,22 @@ let state = {
     ]
 }
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let newPost = {
         id: 1,
-        post: postMessage,
+        post: state.profilePage.newPostText,
         likesCount: '3'
     }
     state.profilePage.postData.push(newPost)
+    state.profilePage.newPostText = ''
     rerenderEntireTree(state)
 }
 
+
+export let changeNewPostText = (newText) => {
+    state.profilePage.newPostText = newText
+    rerenderEntireTree(state)
+}
 
 // Это типа JSON формат получается
 

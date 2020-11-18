@@ -1,11 +1,8 @@
 .users_message {
     color: #000;
     font-size: 18px;
+    padding: 1m;
 }
 .users_wrapper {
-    height: 130px;
-    display: flex;
-    flex-direction: column;
-    background-color: cornsilk;
-    border-bottom: 1px solid #000000;
+
 }

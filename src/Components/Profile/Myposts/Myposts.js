@@ -15,12 +15,19 @@ const MyPosts = (props) => {
             addPost()
         }
     }
+    const onPostChange = () => {
+        let text = newPost.current.value
+        props.changeNewPostText(text)
+    }
     return (
         <div>
             <h3>My posts</h3>
             <div className={classes.post_block}>
-                <div><textarea ref={newPost} onKeyDown={onKeyDown} name="posts" id="txtarea" cols="20" rows="5" value='VIOLENT'/></div>
-                <div><button onClick={addPost}>Add post</button></div>
+                <div><textarea onChange={onPostChange} ref={newPost} onKeyDown={onKeyDown} name="posts" id="txtarea" cols="20" rows="5"
+                               value={props.newPostText}/></div>
+                <div>
+                    <button onClick={addPost}>Add post</button>
+                </div>
             </div>
             <div>
                 {postsElements}
@@ -28,12 +35,6 @@ const MyPosts = (props) => {
         </div>
     )
 }
-
-/*const onKeyDown = e => {
-    if (e.code === "Enter") {
-        addPost()
-    }
-}*/
 
 
 export default MyPosts

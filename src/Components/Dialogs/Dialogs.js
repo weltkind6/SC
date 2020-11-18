@@ -13,7 +13,11 @@ const Dialogs = (props) => {
             <Dialogsitem name={d.name} id={d.id}/>
         </div>)
 
-    let messageContainer = props.state.messages.map(m => <Messages message={m.message} id={m.id}/>)
+    let messageContainer = props.state.messages.map(m => <div>
+        <Messages message={m.message} id={m.id}/>
+        <textarea></textarea>
+        <button>Send</button>
+    </div>)
 
     return (
         <div>

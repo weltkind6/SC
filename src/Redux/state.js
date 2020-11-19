@@ -4,7 +4,11 @@ import ava2 from '../img/freckle.png'
 import ava3 from '../img/blue.jpg'
 import ava4 from '../img/enot.jpg'
 import ava5 from '../img/chika.jpg'
-import {rerenderEntireTree} from "../render";
+
+
+let rerenderEntireTree = () => {
+}
+
 // Это типа JSON формат получается
 let state = {
     profilePage: {
@@ -59,7 +63,7 @@ export let changeNewPostText = (newText) => {
 }
 // Messages
 
-export let addNewMessage = () => {
+export const addNewMessage = () => {
     let newMess = {
         id: '6',
         message: state.messagePage.newMessageBody,
@@ -68,10 +72,11 @@ export let addNewMessage = () => {
     state.messagePage.newMessageBody = ''
     rerenderEntireTree(state)
 }
-export let changeNewMessageText = (i) => {
+export const changeNewMessageText = (i) => {
     state.messagePage.newMessageBody = i
     rerenderEntireTree(state)
 }
-
-
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer
+}
 export default state

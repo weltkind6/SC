@@ -5,11 +5,11 @@ import classes from './Profile.module.css'
 
 const Profile = (props) => {
     return (
-
-       <div className={classes.profile_wrapper}>
-           <ProfileInfo/>
-           <MyPosts postData={props.state.postData} addPost={props.addPost}/>
-       </div>
+        <div className={classes.profile_wrapper}>
+            <ProfileInfo/>
+            <MyPosts postData={props.profPage.postData} addPost={props.addPost} newPostText={props.profPage.newPostText}
+                     changeNewPostText={props.changeNewPostText}/>
+        </div>
     )
 }
 

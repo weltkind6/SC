@@ -8,4 +8,5 @@
 .main-wrapper {
     background-color: hotpink;
     grid-area: m;
+    height: 85vh;
 }

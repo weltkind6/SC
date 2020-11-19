@@ -5,10 +5,15 @@ import PostMessage from "./PostMessage/PostMessage";
 
 const MyPosts = (props) => {
     let postsElements = props.postData.map(p => <PostMessage message={p.post} id={p.id} likesCount={p.likesCount}/>)
+    //Post add
     let newPost = React.createRef()
     let addPost = () => {
         let text = newPost.current.value
         props.addPost(text)
+    }
+    const onPostChange = () => {
+        let text = newPost.current.value
+        props.changeNewPostText(text)
     }
     const onKeyDown = e => {
         if (e.code === "Enter") {
@@ -19,8 +24,11 @@ const MyPosts = (props) => {
         <div>
             <h3>My posts</h3>
             <div className={classes.post_block}>
-                <div><textarea ref={newPost} onKeyDown={onKeyDown} name="posts" id="txtarea" cols="20" rows="5" value='VIOLENT'/></div>
-                <div><button onClick={addPost}>Add post</button></div>
+                <div><textarea onChange={onPostChange} ref={newPost} onKeyDown={onKeyDown} name="posts" id="txtarea" cols="20" rows="5"
+                               value={props.newPostText}/></div>
+                <div>
+                    <button onClick={addPost}>Add post</button>
+                </div>
             </div>
             <div>
                 {postsElements}
@@ -28,12 +36,6 @@ const MyPosts = (props) => {
         </div>
     )
 }
-
-/*const onKeyDown = e => {
-    if (e.code === "Enter") {
-        addPost()
-    }
-}*/
 
 
 export default MyPosts

@@ -5,7 +5,7 @@ import ava3 from '../img/blue.jpg'
 import ava4 from '../img/enot.jpg'
 import ava5 from '../img/chika.jpg'
 import {rerenderEntireTree} from "../render";
-
+// Это типа JSON формат получается
 let state = {
     profilePage: {
         postData: [
@@ -26,6 +26,7 @@ let state = {
             {id: 4, message: 'I would rather to stay home\''},
             {id: 5, message: 'I am fine..'},
         ],
+        newMessageBody: '',
         dialogsData: [
             {id: 1, name: 'Ilay', img: <img src={ava1} alt="avatar" className={classes.ava}/>},
             {id: 2, name: 'Curly', img: <img src={ava2} alt="avatar" className={classes.ava}/>},
@@ -40,7 +41,7 @@ let state = {
         {id: 1, name: 'Alex', ava: <img src={ava4} alt="avatar" className={classes.ava}/>},
     ]
 }
-
+// Profile
 export let addPost = () => {
     let newPost = {
         id: 1,
@@ -52,12 +53,25 @@ export let addPost = () => {
     rerenderEntireTree(state)
 }
 
-
 export let changeNewPostText = (newText) => {
     state.profilePage.newPostText = newText
     rerenderEntireTree(state)
 }
+// Messages
 
-// Это типа JSON формат получается
+export let addNewMessage = () => {
+    let newMess = {
+        id: '6',
+        message: state.messagePage.newMessageBody,
+    }
+    state.messagePage.messages.push(newMess)
+    state.messagePage.newMessageBody = ''
+    rerenderEntireTree(state)
+}
+export let changeNewMessageText = (i) => {
+    state.messagePage.newMessageBody = i
+    rerenderEntireTree(state)
+}
+
 
 export default state

@@ -10,16 +10,20 @@ import Music from "./Components/Music/Music";
 
 const App = (props) => {
     return (
-            <div className='app-wrapper'>
-                <Header/>
-                <Sidebar/>
-                <div className='main-wrapper'>
-                    <Route path='/profile' render={() => <Profile profPage={props.appState.profilePage} addPost={props.addPost} changeNewPostText={props.changeNewPostText}/>}/>
-                    <Route path='/messages' render={() => <Dialogs state={props.appState.messagePage}/>} />
-                    <Route path='/friends' render={() => <Friends state={props.appState}/>} />
-                    <Route path='/music' render={() => <Music/>}/>
-                </div>
+        <div className='app-wrapper'>
+            <Header/>
+            <Sidebar/>
+            <div className='main-wrapper'>
+                <Route path='/profile'
+                       render={() => <Profile profPage={props.appState.profilePage} addPost={props.addPost}
+                                              changeNewPostText={props.changeNewPostText}/>}/>
+                <Route path='/messages'
+                       render={() => <Dialogs messPage={props.appState.messagePage} addNewMessage={props.addNewMessage}
+                                              changeNewMessageText={props.changeNewMessageText}/>}/>
+                <Route path='/friends' render={() => <Friends state={props.appState}/>}/>
+                <Route path='/music' render={() => <Music/>}/>
             </div>
+        </div>
     );
 }
 

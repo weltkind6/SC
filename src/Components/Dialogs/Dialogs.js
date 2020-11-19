@@ -1,23 +1,34 @@
 import React from 'react'
 import classes from './Dialogs.module.css'
-
 import Messages from "./Messages/Messages";
 import Dialogsitem from "./DialogsItem/Dialogsitem";
 
+
 const Dialogs = (props) => {
-
-
-    let dialogsElements = props.state.dialogsData.map(d =>
+    let dialogsElements = props.messPage.dialogsData.map(d =>
         <div className={classes.user_block}>
             <Avatars ava={d.img}/>
             <Dialogsitem name={d.name} id={d.id}/>
         </div>)
-
-    let messageContainer = props.state.messages.map(m => <div>
+    let messageContainer = props.messPage.messages.map(m => <div>
         <Messages message={m.message} id={m.id}/>
-        <textarea></textarea>
-        <button>Send</button>
     </div>)
+    // Functions for Redux
+    let newMessage = React.createRef()
+    let addMessage = () => {
+        let text = newMessage.current.value
+        props.addNewMessage(text)
+    }
+    let onMessageChange = () => {
+        let text = newMessage.current.value
+        props.changeNewMessageText(text)
+    }
+    const onPressEnter = e => {
+        if(e.code === 'Enter') {
+            addMessage()
+        }
+    }
+
 
     return (
         <div>
@@ -27,6 +38,8 @@ const Dialogs = (props) => {
                 </div>
                 <div>
                     {messageContainer}
+                    <textarea onKeyDown={onPressEnter} ref={newMessage} onChange={onMessageChange} value={props.messPage.newMessageBody}/>
+                    <button onClick={addMessage}>Send</button>
                 </div>
             </div>
             <Messages/>

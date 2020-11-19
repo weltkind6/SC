@@ -5,19 +5,20 @@ import PostMessage from "./PostMessage/PostMessage";
 
 const MyPosts = (props) => {
     let postsElements = props.postData.map(p => <PostMessage message={p.post} id={p.id} likesCount={p.likesCount}/>)
+    //Post add
     let newPost = React.createRef()
     let addPost = () => {
         let text = newPost.current.value
         props.addPost(text)
     }
+    const onPostChange = () => {
+        let text = newPost.current.value
+        props.changeNewPostText(text)
+    }
     const onKeyDown = e => {
         if (e.code === "Enter") {
             addPost()
         }
-    }
-    const onPostChange = () => {
-        let text = newPost.current.value
-        props.changeNewPostText(text)
     }
     return (
         <div>

@@ -11,7 +11,12 @@
     text-decoration: none;
     font-size: 18px;
     padding: 5px;
-    color: darkblue;
+    color: #000000;
+    cursor: pointer;
+    font-weight: bold;
+}
+.nav_item:hover {
+    color: gold;
 }
 .friends_block {
     margin-top: 3em;

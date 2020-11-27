@@ -8,12 +8,11 @@ const MyPosts = (props) => {
     //Post add
     let newPost = React.createRef()
     let addPost = () => {
-        let text = newPost.current.value
-        props.addPost(text)
+     props.dispatch({type: 'ADD-POST'})
     }
     const onPostChange = () => {
         let text = newPost.current.value
-        props.changeNewPostText(text)
+        props.dispatch({type: 'CHANGE-NEW-POST', newText: text})
     }
     const onKeyDown = e => {
         if (e.code === "Enter") {

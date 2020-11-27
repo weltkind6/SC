@@ -5,9 +5,36 @@ import ava3 from '../img/blue.jpg'
 import ava4 from '../img/enot.jpg'
 import ava5 from '../img/chika.jpg'
 
+export const addPostActionCreator = () => {
+    return {
+        type: 'ADD-POST'
+    }
+}
+export const changePostActionCreator = (text) => {
+    return {
+        type: 'CHANGE-NEW-POST', newText: text
+    }
+}
+
+const ADD_POST = 'ADD-POST';
+const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
+
+export const actionMessageCreator = () => {
+    return {
+        type: 'ADD-MESSAGE'
+    }
+}
+export const actionChangeMessageCreator = (text) => {
+    return {
+        type: 'CHANGE-NEW-MESSAGE', newMessage: text
+    }
+}
+
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const CHANGE_NEW_MESSAGE = 'CHANGE-NEW-MESSAGE';
 
 let store = {
-    _callSubscriber(){
+    _callSubscriber() {
     },
     _state: {
         profilePage: {
@@ -47,11 +74,11 @@ let store = {
     getState() {
         return this._state
     },
-    subscribe(observer){
+    subscribe(observer) {
         this._callSubscriber = observer
     },
     dispatch(action) {
-        if(action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let newPost = {
                 id: 1,
                 post: this._state.profilePage.newPostText,
@@ -60,23 +87,28 @@ let store = {
             this._state.profilePage.postData.push(newPost)
             this._state.profilePage.newPostText = ''
             this._callSubscriber(this._state)
-        }
-        else if(action.type === 'CHANGE-NEW-POST') {
-            this._state.profilePage.newPostText = action.newText
-            this._callSubscriber(this._state)
-        }
-        else if(action.type === 'ADD-MESSAGE') {
-            let newMess = {
-                id: '6',
-                message: this._state.messagePage.newMessageBody,
+        } else {
+
+            if (action.type === CHANGE_NEW_POST) {
+                this._state.profilePage.newPostText = action.newText
+                this._callSubscriber(this._state)
+            } else {
+
+                if (action.type === ADD_MESSAGE) {
+                                let newMess = {
+                                    id: '6',
+                                    message: this._state.messagePage.newMessageBody,
+                                }
+                                this._state.messagePage.messages.push(newMess)
+                                this._state.messagePage.newMessageBody = ''
+                                this._callSubscriber(this._state)
+                            } else {
+                    if (action.type === CHANGE_NEW_MESSAGE) {
+                                                    this._state.messagePage.newMessageBody = action.newMessage
+                                                    this._callSubscriber(this._state)
+                                                }
+                }
             }
-            this._state.messagePage.messages.push(newMess)
-            this._state.messagePage.newMessageBody = ''
-            this._callSubscriber(this._state)
-        }
-        else if(action.type === 'CHANGE-NEW-MESSAGE') {
-            this._state.messagePage.newMessageBody = action.newMessage
-            this._callSubscriber(this._state)
         }
     }
 

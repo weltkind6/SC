@@ -1,6 +1,5 @@
 import React from 'react';
 import './index.css';
-import state, {addNewMessage, addPost, changeNewMessageText, changeNewPostText, subscribe} from "./Redux/state";
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';

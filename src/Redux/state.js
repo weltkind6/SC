@@ -5,16 +5,8 @@ import ava3 from '../img/blue.jpg'
 import ava4 from '../img/enot.jpg'
 import ava5 from '../img/chika.jpg'
 
-export const addPostActionCreator = () => {
-    return {
-        type: 'ADD-POST'
-    }
-}
-export const changePostActionCreator = (text) => {
-    return {
-        type: 'CHANGE-NEW-POST', newText: text
-    }
-}
+export const addPostActionCreator = () => ({type: 'ADD-POST'})
+export const changePostActionCreator = (text) => ({type: 'CHANGE-NEW-POST', newText: text})
 
 const ADD_POST = 'ADD-POST';
 const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
@@ -95,18 +87,18 @@ let store = {
             } else {
 
                 if (action.type === ADD_MESSAGE) {
-                                let newMess = {
-                                    id: '6',
-                                    message: this._state.messagePage.newMessageBody,
-                                }
-                                this._state.messagePage.messages.push(newMess)
-                                this._state.messagePage.newMessageBody = ''
-                                this._callSubscriber(this._state)
-                            } else {
+                    let newMess = {
+                        id: '6',
+                        message: this._state.messagePage.newMessageBody,
+                    }
+                    this._state.messagePage.messages.push(newMess)
+                    this._state.messagePage.newMessageBody = ''
+                    this._callSubscriber(this._state)
+                } else {
                     if (action.type === CHANGE_NEW_MESSAGE) {
-                                                    this._state.messagePage.newMessageBody = action.newMessage
-                                                    this._callSubscriber(this._state)
-                                                }
+                        this._state.messagePage.newMessageBody = action.newMessage
+                        this._callSubscriber(this._state)
+                    }
                 }
             }
         }

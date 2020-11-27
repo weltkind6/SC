@@ -7,12 +7,11 @@ import {addPostActionCreator, changePostActionCreator} from "../../../Redux/stat
 const MyPosts = (props) => {
     let postsElements = props.postData.map(p => <PostMessage message={p.post} id={p.id} likesCount={p.likesCount}/>)
     //Post add
-    let newPost = React.createRef()
     let addPost = () => {
      props.dispatch(addPostActionCreator())
     }
-    const onPostChange = () => {
-        let text = newPost.current.value
+    const onPostChange = (event) => {
+        let text = event.target.value
         props.dispatch(changePostActionCreator(text))
     }
     const onKeyDown = e => {
@@ -24,8 +23,7 @@ const MyPosts = (props) => {
         <div>
             <h3>My posts</h3>
             <div className={classes.post_block}>
-                <div><textarea onChange={onPostChange} ref={newPost} onKeyDown={onKeyDown} name="posts" id="txtarea" cols="20" rows="5"
-                               value={props.newPostText}/></div>
+                <div><textarea onChange={onPostChange} onKeyDown={onKeyDown} value={props.newPostText}/></div>
                 <div>
                     <button onClick={addPost}>Add post</button>
                 </div>

@@ -14,13 +14,13 @@ const Dialogs = (props) => {
     let messageContainer = props.messPage.messages.map(m => <div>
         <Messages message={m.message} id={m.id}/>
     </div>)
+    let newMessageBody = props.messPage.newMessageBody
     // Functions for Redux
-    let newMessage = React.createRef()
     let addMessage = () => {
         props.dispatch(actionMessageCreator())
     }
-    let onMessageChange = () => {
-        let text = newMessage.current.value
+    let onMessageChange = (event) => {
+        let text =  event.target.value
        props.dispatch(actionChangeMessageCreator(text))
     }
     const onPressEnter = e => {
@@ -28,7 +28,6 @@ const Dialogs = (props) => {
             addMessage()
         }
     }
-
 
     return (
         <div>
@@ -38,7 +37,7 @@ const Dialogs = (props) => {
                 </div>
                 <div>
                     {messageContainer}
-                    <textarea onKeyDown={onPressEnter} ref={newMessage} onChange={onMessageChange} value={props.messPage.newMessageBody}/>
+                    <textarea onKeyDown={onPressEnter} onChange={onMessageChange} value={newMessageBody}/>
                     <button onClick={addMessage}>Send</button>
                 </div>
             </div>

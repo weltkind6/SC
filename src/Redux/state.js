@@ -4,7 +4,9 @@ import ava2 from '../img/freckle.png'
 import ava3 from '../img/blue.jpg'
 import ava4 from '../img/enot.jpg'
 import ava5 from '../img/chika.jpg'
-
+const hello = () => {
+    console.log('Hello!')
+}
 let store = {
     _callSubscriber(){
     },

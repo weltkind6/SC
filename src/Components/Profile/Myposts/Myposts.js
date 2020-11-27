@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from './Myposts.module.css'
 import PostMessage from "./PostMessage/PostMessage";
+import {addPostActionCreator, changePostActionCreator} from "../../../Redux/state";
 
 
 const MyPosts = (props) => {
@@ -8,12 +9,11 @@ const MyPosts = (props) => {
     //Post add
     let newPost = React.createRef()
     let addPost = () => {
-        let text = newPost.current.value
-        props.addPost(text)
+     props.dispatch(addPostActionCreator())
     }
     const onPostChange = () => {
         let text = newPost.current.value
-        props.changeNewPostText(text)
+        props.dispatch(changePostActionCreator(text))
     }
     const onKeyDown = e => {
         if (e.code === "Enter") {

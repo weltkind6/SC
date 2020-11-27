@@ -50,25 +50,6 @@ let store = {
     subscribe(observer){
         this._callSubscriber = observer
     },
-    addPost(){
-
-    },
-    changeNewPostText(newText){
-
-    },
-    addNewMessage(){
-        let newMess = {
-            id: '6',
-            message: this._state.messagePage.newMessageBody,
-        }
-        this._state.messagePage.messages.push(newMess)
-        this._state.messagePage.newMessageBody = ''
-        this._callSubscriber(this._state)
-    },
-    changeNewMessageText(i){
-        this._state.messagePage.newMessageBody = i
-        this._callSubscriber(this._state)
-    },
     dispatch(action) {
         if(action.type === 'ADD-POST') {
             let newPost = {
@@ -82,6 +63,19 @@ let store = {
         }
         else if(action.type === 'CHANGE-NEW-POST') {
             this._state.profilePage.newPostText = action.newText
+            this._callSubscriber(this._state)
+        }
+        else if(action.type === 'ADD-MESSAGE') {
+            let newMess = {
+                id: '6',
+                message: this._state.messagePage.newMessageBody,
+            }
+            this._state.messagePage.messages.push(newMess)
+            this._state.messagePage.newMessageBody = ''
+            this._callSubscriber(this._state)
+        }
+        else if(action.type === 'CHANGE-NEW-MESSAGE') {
+            this._state.messagePage.newMessageBody = action.newMessage
             this._callSubscriber(this._state)
         }
     }

@@ -16,12 +16,11 @@ const Dialogs = (props) => {
     // Functions for Redux
     let newMessage = React.createRef()
     let addMessage = () => {
-        let text = newMessage.current.value
-        props.addNewMessage(text)
+        props.dispatch({type: 'ADD-MESSAGE'})
     }
     let onMessageChange = () => {
         let text = newMessage.current.value
-        props.changeNewMessageText(text)
+       props.dispatch({type: 'CHANGE-NEW-MESSAGE', newMessage: text})
     }
     const onPressEnter = e => {
         if(e.code === 'Enter') {

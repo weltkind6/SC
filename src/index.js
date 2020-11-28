@@ -5,7 +5,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
-import store from "./Redux/state";
+import store from "./Redux/redux-store";
+
 
 
 const rerenderEntireTree = (state) => {

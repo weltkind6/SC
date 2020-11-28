@@ -4,26 +4,9 @@ import ava2 from '../img/freckle.png'
 import ava3 from '../img/blue.jpg'
 import ava4 from '../img/enot.jpg'
 import ava5 from '../img/chika.jpg'
+import profileReducer from "./profileReducer";
+import messageReducer from "./messageReducer";
 
-export const addPostActionCreator = () => ({type: 'ADD-POST'})
-export const changePostActionCreator = (text) => ({type: 'CHANGE-NEW-POST', newText: text})
-
-const ADD_POST = 'ADD-POST';
-const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
-
-export const actionMessageCreator = () => {
-    return {
-        type: 'ADD-MESSAGE'
-    }
-}
-export const actionChangeMessageCreator = (text) => {
-    return {
-        type: 'CHANGE-NEW-MESSAGE', newMessage: text
-    }
-}
-
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const CHANGE_NEW_MESSAGE = 'CHANGE-NEW-MESSAGE';
 
 let store = {
     _callSubscriber() {
@@ -70,39 +53,11 @@ let store = {
         this._callSubscriber = observer
     },
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 1,
-                post: this._state.profilePage.newPostText,
-                likesCount: '3'
-            }
-            this._state.profilePage.postData.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._callSubscriber(this._state)
-        } else {
-
-            if (action.type === CHANGE_NEW_POST) {
-                this._state.profilePage.newPostText = action.newText
-                this._callSubscriber(this._state)
-            } else {
-
-                if (action.type === ADD_MESSAGE) {
-                    let newMess = {
-                        id: '6',
-                        message: this._state.messagePage.newMessageBody,
-                    }
-                    this._state.messagePage.messages.push(newMess)
-                    this._state.messagePage.newMessageBody = ''
-                    this._callSubscriber(this._state)
-                } else {
-                    if (action.type === CHANGE_NEW_MESSAGE) {
-                        this._state.messagePage.newMessageBody = action.newMessage
-                        this._callSubscriber(this._state)
-                    }
-                }
-            }
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.messagePage = messageReducer(this._state.messagePage, action)
+        this._callSubscriber(this._state)
     }
+
 
 }
 

@@ -7,22 +7,27 @@ import {actionChangeMessageCreator, actionMessageCreator} from "../../Redux/mess
 
 
 const Dialogs = (props) => {
-    let dialogsElements = props.messPage.dialogsData.map(d =>
+    debugger
+
+    let statement = props.newState
+
+
+    let dialogsElements = statement.dialogsData.map(d =>
         <div className={classes.user_block}>
             <Avatars ava={d.img}/>
             <Dialogsitem name={d.name} id={d.id}/>
         </div>)
-    let messageContainer = props.messPage.messages.map(m => <div>
+    let messageContainer = statement.messages.map(m => <div>
         <Messages message={m.message} id={m.id}/>
     </div>)
-    let newMessageBody = props.messPage.newMessageBody
+    let newMessageBody = statement.newMessageBody
     // Functions for Redux
     let addMessage = () => {
-        props.dispatch(actionMessageCreator())
+       props.addMessage()
     }
     let onMessageChange = (event) => {
         let text =  event.target.value
-       props.dispatch(actionChangeMessageCreator(text))
+        props.onMessageChange(text)
     }
     const onPressEnter = e => {
         if(e.code === 'Enter') {

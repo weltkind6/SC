@@ -1,19 +1,20 @@
 import React from 'react'
 import classes from './Myposts.module.css'
 import PostMessage from "./PostMessage/PostMessage";
-import {addPostActionCreator, changePostActionCreator} from "../../../Redux/profileReducer";
+
 
 
 
 const MyPosts = (props) => {
-    let postsElements = props.postData.map(p => <PostMessage message={p.post} id={p.id} likesCount={p.likesCount}/>)
+    let newState = props.state
+    let postsElements = newState.postData.map(p => <PostMessage message={p.post} id={p.id} likesCount={p.likesCount}/>)
     //Post add
     let addPost = () => {
-     props.dispatch(addPostActionCreator())
+     props.addPost()
     }
     const onPostChange = (event) => {
         let text = event.target.value
-        props.dispatch(changePostActionCreator(text))
+        props.onPostChange(text)
     }
     const onKeyDown = e => {
         if (e.code === "Enter") {
@@ -24,7 +25,7 @@ const MyPosts = (props) => {
         <div>
             <h3>My posts</h3>
             <div className={classes.post_block}>
-                <div><textarea onChange={onPostChange} onKeyDown={onKeyDown} value={props.newPostText}/></div>
+                <div><textarea onChange={onPostChange} onKeyDown={onKeyDown} value={newState.newPostText}/></div>
                 <div>
                     <button onClick={addPost}>Add post</button>
                 </div>

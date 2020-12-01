@@ -6,9 +6,8 @@ import PostMessage from "./PostMessage/PostMessage";
 
 
 const MyPosts = (props) => {
-    debugger
     let newState = props.state
-    let postsElements = newState.map(p => <PostMessage message={p.post} id={p.id} likesCount={p.likesCount}/>)
+    let postsElements = newState.postData.map(p => <PostMessage message={p.post} id={p.id} likesCount={p.likesCount}/>)
     //Post add
     let addPost = () => {
      props.addPost()
@@ -26,7 +25,7 @@ const MyPosts = (props) => {
         <div>
             <h3>My posts</h3>
             <div className={classes.post_block}>
-                <div><textarea onChange={onPostChange} onKeyDown={onKeyDown} value={props.newPostText}/></div>
+                <div><textarea onChange={onPostChange} onKeyDown={onKeyDown} value={newState.newPostText}/></div>
                 <div>
                     <button onClick={addPost}>Add post</button>
                 </div>

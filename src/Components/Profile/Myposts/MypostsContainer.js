@@ -3,12 +3,11 @@ import {addPostActionCreator, changePostActionCreator} from "../../../Redux/prof
 import MyPosts from "./Myposts";
 
 
-
 const MyPostsContainer = (props) => {
-const state = props.store.getState().profilePage.postData
+    const state = props.store.getState().profilePage
     //Post add
     let addPost = () => {
-     props.store.dispatch(addPostActionCreator())
+        props.store.dispatch(addPostActionCreator())
     }
     const onPostChange = (text) => {
         props.store.dispatch(changePostActionCreator(text))

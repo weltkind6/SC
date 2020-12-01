@@ -1,19 +1,21 @@
 import React from 'react'
 import classes from './Myposts.module.css'
 import PostMessage from "./PostMessage/PostMessage";
-import {addPostActionCreator, changePostActionCreator} from "../../../Redux/profileReducer";
+
 
 
 
 const MyPosts = (props) => {
-    let postsElements = props.postData.map(p => <PostMessage message={p.post} id={p.id} likesCount={p.likesCount}/>)
+    debugger
+    let newState = props.state
+    let postsElements = newState.map(p => <PostMessage message={p.post} id={p.id} likesCount={p.likesCount}/>)
     //Post add
     let addPost = () => {
-     props.dispatch(addPostActionCreator())
+     props.addPost()
     }
     const onPostChange = (event) => {
         let text = event.target.value
-        props.dispatch(changePostActionCreator(text))
+        props.onPostChange(text)
     }
     const onKeyDown = e => {
         if (e.code === "Enter") {

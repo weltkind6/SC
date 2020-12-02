@@ -1,3 +1,4 @@
+import React from "react";
 import './App.css';
 import Header from "./Components/Header/Header";
 import Sidebar from "./Components/Siderbar/Sidebar";
@@ -8,6 +9,7 @@ import DialogsContainer from "./Components/Dialogs/DialogsWrapper";
 import Route from "react-router-dom/es/Route";
 
 
+
 const App = (props) => {
     return (
         <div className='app-wrapper'>
@@ -15,10 +17,10 @@ const App = (props) => {
             <Sidebar/>
             <div className='main-wrapper'>
                 <Route path='/profile'
-                       render={() => <Profile store={props.store}/>}/>
+                       render={() => <Profile/>}/>
                 <Route path='/messages'
-                       render={() => <DialogsContainer store={props.store}/>}/>
-                <Route path='/friends' render={() => <Friends state={props.appState}/>}/>
+                       render={() => <DialogsContainer/>}/>
+                <Route path='/friends' render={() => <Friends/>}/>
                 <Route path='/music' render={() => <Music/>}/>
             </div>
         </div>

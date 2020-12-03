@@ -7,16 +7,18 @@ import Dialogsitem from "./DialogsItem/Dialogsitem";
 
 
 const Dialogs = (props) => {
-    let statement = props.newState
-    let dialogsElements = statement.dialogsData.map(d =>
+    debugger
+    let state = props.messagePage
+    let dialogsElements = state.dialogsData.map(d =>
         <div className={classes.user_block}>
             <Avatars ava={d.img}/>
             <Dialogsitem name={d.name} id={d.id}/>
         </div>)
-    let messageContainer = statement.messages.map(m => <div>
+    let messageContainer = state.messages.map(m => <div>
         <Messages message={m.message} id={m.id}/>
     </div>)
-    let newMessageBody = statement.newMessageBody
+    let newMessageBody = state.newMessageBody
+
     // Functions for Redux
     let addMessage = () => {
        props.addMessage()

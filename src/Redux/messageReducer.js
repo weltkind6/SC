@@ -7,25 +7,30 @@ import ava5 from "../img/chika.jpg";
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const CHANGE_NEW_MESSAGE = 'CHANGE-NEW-MESSAGE';
+
 const messageReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_MESSAGE:
+        case ADD_MESSAGE: {
             let newMess = {
                 id: '6',
                 message: state.newMessageBody,
             }
-            state.messages.push(newMess)
-            state.newMessageBody = ''
-            break
-        case CHANGE_NEW_MESSAGE:
+            let stateCopy = {...state}
+            stateCopy.messages = [...state.messages]
+            stateCopy.messages.push(newMess)
+            stateCopy.newMessageBody = state.newMessageBody = ''
+            return stateCopy
+        }
+        case CHANGE_NEW_MESSAGE: {
+            let stateCopy = {...state}
+            stateCopy.newMessageBody = action.newMessage
             state.newMessageBody = action.newMessage
-            break
+            return stateCopy
+        }
         default:
             return state
     }
-    return state
 }
-
 
 const initialState = {
     messages: [
@@ -44,6 +49,7 @@ const initialState = {
         {id: 5, name: 'Toryn', img: <img src={ava5} alt="avatar" className={classes.ava}/>},
     ]
 }
+
 
 export const actionMessageCreator = () => ({type: 'ADD-MESSAGE'})
 export const actionChangeMessageCreator = (text) => ({type: 'CHANGE-NEW-MESSAGE', newMessage: text})

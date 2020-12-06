@@ -14,26 +14,17 @@ const initialState = {
 }
 
 const profileReducer = (state = initialState, action) => {
-    debugger
     switch (action.type) {
-        case ADD_POST: {
-            let newPost = {
-                id: 1,
-                post: state.newPostText,
-                likesCount: '3'
+        case ADD_POST:
+            return {
+                ...state, newPostText: '', postData: [...state.postData, {
+                    id: 1,
+                    post: state.newPostText,
+                    likesCount: '3'
+                }]
             }
-            let stateCopy = {...state}
-            stateCopy.postData = [...state.postData]
-            stateCopy.postData.push(newPost)
-            stateCopy.newPostText = state.newPostText = ''
-            return stateCopy
-        }
-        case CHANGE_NEW_POST: {
-            let stateCopy = {...state}
-            stateCopy.newPostText = action.newText
-            state.newPostText = action.newText
-            return stateCopy
-        }
+        case CHANGE_NEW_POST:
+            return {...state, newPostText: action.newText}
         default:
             return state
     }
@@ -41,3 +32,6 @@ const profileReducer = (state = initialState, action) => {
 export default profileReducer
 export const addPostActionCreator = () => ({type: 'ADD-POST'})
 export const changePostActionCreator = (text) => ({type: 'CHANGE-NEW-POST', newText: text})
+
+// Вместо создание нового объекта stateCopy можно сразу возвращать новый пустой {} внутри которого мы делаем зануление,
+// копирование нужных Непримитивов и добавление новых постов. В зависиомсти от dispatch

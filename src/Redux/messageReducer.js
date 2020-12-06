@@ -9,24 +9,20 @@ const ADD_MESSAGE = 'ADD-MESSAGE';
 const CHANGE_NEW_MESSAGE = 'CHANGE-NEW-MESSAGE';
 
 const messageReducer = (state = initialState, action) => {
+
     switch (action.type) {
-        case ADD_MESSAGE: {
-            let newMess = {
-                id: '6',
-                message: state.newMessageBody,
+        case ADD_MESSAGE:
+            return  {
+                ...state, messages: [...state.messages, {
+                    id: '6',
+                    message: state.newMessageBody,
+                }], newMessageBody: ''
             }
-            let stateCopy = {...state}
-            stateCopy.messages = [...state.messages]
-            stateCopy.messages.push(newMess)
-            stateCopy.newMessageBody = state.newMessageBody = ''
-            return stateCopy
-        }
-        case CHANGE_NEW_MESSAGE: {
-            let stateCopy = {...state}
-            stateCopy.newMessageBody = action.newMessage
-            state.newMessageBody = action.newMessage
-            return stateCopy
-        }
+            // instead push method add newMess it the end of array (WTF)
+        case CHANGE_NEW_MESSAGE:
+            return  {...state, newMessageBody: action.newMessage}
+            //stateCopy.newMessageBody = action.newMessage (it was changed by the code above)
+
         default:
             return state
     }

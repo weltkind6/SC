@@ -16,6 +16,7 @@ const Sidebar = (props) => {
             </div>
             <div className={classes.side_item}><NavLink to='/news' className={classes.nav_item}>News</NavLink></div>
             <div className={classes.side_item}><NavLink to='/music' className={classes.nav_item}>Music</NavLink></div>
+            <div className={classes.side_item}><NavLink to='/users' className={classes.nav_item}>Users</NavLink></div>
             <div className={classes.side_item}><NavLink to='/settings' className={classes.nav_item}>Settings</NavLink>
             </div>
             <div className={`${classes.side_item} ${classes.friends_block}`}><NavLink to='/friends'

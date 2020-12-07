@@ -7,25 +7,26 @@ import ava5 from "../img/chika.jpg";
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const CHANGE_NEW_MESSAGE = 'CHANGE-NEW-MESSAGE';
+
 const messageReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case ADD_MESSAGE:
-            let newMess = {
-                id: '6',
-                message: state.newMessageBody,
+            return  {
+                ...state, messages: [...state.messages, {
+                    id: '6',
+                    message: state.newMessageBody,
+                }], newMessageBody: ''
             }
-            state.messages.push(newMess)
-            state.newMessageBody = ''
-            break
+            // instead push method add newMess it the end of array (WTF)
         case CHANGE_NEW_MESSAGE:
-            state.newMessageBody = action.newMessage
-            break
+            return  {...state, newMessageBody: action.newMessage}
+            //stateCopy.newMessageBody = action.newMessage (it was changed by the code above)
+
         default:
             return state
     }
-    return state
 }
-
 
 const initialState = {
     messages: [
@@ -44,6 +45,7 @@ const initialState = {
         {id: 5, name: 'Toryn', img: <img src={ava5} alt="avatar" className={classes.ava}/>},
     ]
 }
+
 
 export const actionMessageCreator = () => ({type: 'ADD-MESSAGE'})
 export const actionChangeMessageCreator = (text) => ({type: 'CHANGE-NEW-MESSAGE', newMessage: text})

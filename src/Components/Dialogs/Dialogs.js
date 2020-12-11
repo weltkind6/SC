@@ -12,7 +12,7 @@ const Dialogs = (props) => {
     let dialogsElements = state.dialogsData.map(d =>
         <div className={classes.user_block}>
             <Avatars ava={d.img}/>
-            <Dialogsitem name={d.name} id={d.id}/>
+            <Dialogsitem name={d.name} id={d.id} key={d.id}/>
         </div>)
     let messageContainer = state.messages.map(m => <div>
         <Messages message={m.message} id={m.id}/>

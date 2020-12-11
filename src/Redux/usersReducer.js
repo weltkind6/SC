@@ -37,10 +37,11 @@ const usersReducer = (state = initialState, action) => {
     }
 
 }
-export default usersReducer
+
 export const followActionCreator = (userId) => ({type: 'FOLLOW', userId})
 export const unFollowActionCreatorActionCreator = (userId) => ({type: 'UNFOLLOW', userId})
 export const setUsersActionCreator = (users) => ({type: 'SET-USERS', users})
+export default usersReducer
 
 // Вместо создание нового объекта stateCopy можно сразу возвращать новый пустой {} внутри которого мы делаем зануление,
 // копирование нужных Непримитивов и добавление новых постов. В зависиомсти от dispatch

@@ -3,7 +3,6 @@
     grid-template-columns: 2fr 10fr;
 }
 .users {
-    background-color: cornsilk;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -17,7 +16,6 @@
 .user_block {
     height: 110px;
     padding: 10px;
-    outline: 1px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;

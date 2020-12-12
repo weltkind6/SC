@@ -13,18 +13,18 @@ class Users extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={classes.users_wrapper}>
                 {this.props.users.map(u => <div key={u.id}>
-                    <div>
+                    <div className={classes.users_block}>
                         <div><img alt='' src={u.photos.small != null ? u.photos.small : mage}
                                   className={classes.avatar}/>
                         </div>
                         <div>
                             {u.followed
-                                ? <button onClick={() => {
+                                ? <button className={classes.user_button} onClick={() => {
                                     this.props.unfollow(u.id)
                                 }}>UnFollow</button> :
-                                <button onClick={() => {
+                                <button className={classes.user_button} onClick={() => {
                                     this.props.follow(u.id)
                                 }}>Follow</button>}
                         </div>

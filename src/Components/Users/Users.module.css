@@ -27,5 +27,7 @@
     background-color: #ffffff;
     color: #000000;
     border: 2px solid #27aae1;
-
+}
+.active {
+    font-weight: bold;
 }

@@ -6,7 +6,8 @@
     padding: 20px;
 }
 .main-wrapper {
-    background-color: hotpink;
+    border: 2px solid #27aae1;
+    background-color: GhostWhite;
     grid-area: m;
     min-height: 85vh;
     height: auto;

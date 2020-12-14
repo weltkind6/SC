@@ -3,3 +3,31 @@
     height: 80px;
     border-radius: 50%;
 }
+.users_wrapper {
+    padding: 20px;
+}
+.users_block {
+    margin-bottom: 10px;
+
+}
+.user_button {
+    border: 2px solid #fff;
+    outline: none;
+    width: 100px;
+    font-size: 16px;
+    color: cornsilk;
+    background-color: #27aae1;
+    border-radius: 30px;
+    text-align: center;
+    padding: 5px 0 5px 0;
+    cursor: pointer;
+
+}
+.user_button:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #27aae1;
+}
+.active {
+    font-weight: bold;
+}

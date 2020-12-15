@@ -3,7 +3,6 @@ import classes from "./Users.module.css";
 import mage from "../../img/mage.png";
 
 const Users = (props) => {
-    debugger
     const pagesCount = Math.ceil(props.totalUserCount / props.pageSize)
     let pages = []
     for (let i = 1; i <= pagesCount; i++) {

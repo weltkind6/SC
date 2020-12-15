@@ -3,13 +3,15 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS'
 const SET_PAGE = 'SET_PAGE'
 const SET_TOTAL_COUNT = 'SET-TOTAL-COUNT'
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING'
 
 
 const initialState = {
     users: [],
     pageSize: 5,
     totalUserCount: 0,
-    currentPage: 3
+    currentPage: 3,
+    isFetching: true
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -41,18 +43,23 @@ const usersReducer = (state = initialState, action) => {
         case SET_TOTAL_COUNT: {
             return {...state, totalUserCount: action.count}
         }
+        case TOGGLE_IS_FETCHING: {
+            return {...state, isFetching: action.isFetching}
+        }
         default:
             return state;
     }
 
 }
 
-export const followActionCreator = (userId) => ({type: 'FOLLOW', userId})
-export const unFollowActionCreatorActionCreator = (userId) => ({type: 'UNFOLLOW', userId})
-export const setUsersActionCreator = (users) => ({type: 'SET-USERS', users})
-export const setCurrentPageActionCreator = (currentPage) => ({type: 'SET_PAGE', currentPage})
-export const setTotalUsersCountActionCreator = (totalUserCount) => ({type: 'SET-TOTAL-COUNT', count: totalUserCount})
-// Можно вместо count в case totalUserCount зарядить, и тот тоже написать просто totalUserCount
+export const follow = (userId) => ({type: 'FOLLOW', userId})
+export const unFollow = (userId) => ({type: 'UNFOLLOW', userId})
+export const setUsers = (users) => ({type: 'SET-USERS', users})
+export const setCurrentPage = (currentPage) => ({type: 'SET_PAGE', currentPage})
+export const setTotalUsersCount = (totalUserCount) => ({type: 'SET-TOTAL-COUNT', count: totalUserCount})
+export const setIsFetching = (isFetching) => ({type: 'TOGGLE-IS-FETCHING', isFetching})
+// isFetching потому что Reducer достает action.isFetching
+
 export default usersReducer
 
 // Вместо создание нового объекта stateCopy можно сразу возвращать новый пустой {} внутри которого мы делаем зануление,

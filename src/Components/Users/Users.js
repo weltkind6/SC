@@ -1,6 +1,8 @@
 import React from 'react'
 import classes from "./Users.module.css";
 import mage from "../../img/mage.png";
+import {NavLink} from "react-router-dom";
+import profileReducer from "../../Redux/profileReducer";
 
 const Users = (props) => {
     const pagesCount = Math.ceil(props.totalUserCount / props.pageSize)
@@ -17,8 +19,11 @@ const Users = (props) => {
             </div>
             {props.users.map(u => <div key={u.id}>
                     <div className={classes.users_block}>
-                        <div><img alt='' src={u.photos.small != null ? u.photos.small : mage}
-                                  className={classes.avatar}/>
+                        <div>
+                            <NavLink to={'/profile/' + u.id}>
+                                <img alt='' src={u.photos.small != null ? u.photos.small : mage}
+                                     className={classes.avatar}/>
+                            </NavLink>
                         </div>
                         <div>
                             {u.followed

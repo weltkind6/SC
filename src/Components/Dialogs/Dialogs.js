@@ -5,9 +5,7 @@ import Dialogsitem from "./DialogsItem/Dialogsitem";
 
 
 
-
 const Dialogs = (props) => {
-    debugger
     let state = props.messagePage
     let dialogsElements = state.dialogsData.map(d =>
         <div className={classes.user_block}>

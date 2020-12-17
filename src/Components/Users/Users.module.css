@@ -1,14 +1,18 @@
-.avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-}
 .users_wrapper {
-    padding: 20px;
+    padding: 20px;;
 }
 .users_block {
     margin-bottom: 10px;
 
+}
+.pages_block {
+    outline: 1px solid red;
+    overflow-wrap: break-word;
+}
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
 }
 .user_button {
     border: 2px solid #fff;

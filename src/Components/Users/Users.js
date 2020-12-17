@@ -12,7 +12,7 @@ const Users = (props) => {
     }
     return (
         <div className={classes.users_wrapper}>
-            <div>
+            <div className={classes.pages_block}>
                 {pages.map((p) => <span onClick={() => {
                     props.onPageChanged(p)
                 }} className={props.currentPage === p && classes.active}>{p}</span>)}

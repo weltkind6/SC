@@ -2,7 +2,7 @@ import React from 'react'
 import classes from "./Users.module.css";
 import mage from "../../img/mage.png";
 import {NavLink} from "react-router-dom";
-import profileReducer from "../../Redux/profileReducer";
+
 
 const Users = (props) => {
     const pagesCount = Math.ceil(props.totalUserCount / props.pageSize)

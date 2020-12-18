@@ -12,7 +12,7 @@ import Preloader from "../Common/Preloader/Preloader";
 
 class UsersContainerComponent extends React.Component {
 
-    componentDidMount() { // Метод componentDidMount() запускается после того, как компонент отрендерился
+    componentDidMount() { // Метод componentDidMount() запускается после того, как компонент отрендерился. Монтажник короче
         this.props.setIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
             this.props.setUsers(response.data.items)

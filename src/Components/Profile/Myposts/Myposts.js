@@ -7,7 +7,7 @@ import PostMessage from "./PostMessage/PostMessage";
 
 const MyPosts = (props) => {
     let state = props.profilePage
-    let postsElements = state.postData.map(p => <PostMessage message={p.post} id={p.id} likesCount={p.likesCount}/>)
+    let postsElements = state.postData.map(p => <PostMessage message={p.post} id={p.id} likesCount={p.likesCount} key={p.id}/>)
     //Post add
     let addPost = () => {
      props.addPost()

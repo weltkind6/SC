@@ -9,13 +9,14 @@ import {
 import * as axios from "axios";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
-import {getUsers} from "../../API/api";
+import {usersAPI} from "../../API/api";
+
 
 class UsersContainerComponent extends React.Component {
 
     componentDidMount() { // Метод componentDidMount() запускается после того, как компонент отрендерился. Монтажник короче
         this.props.setIsFetching(true)
-        getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
             this.props.setUsers(data.items)
             this.props.setTotalUsersCount(data.totalCount)
             this.props.setIsFetching(false)
@@ -25,7 +26,7 @@ class UsersContainerComponent extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.setIsFetching(true)
         this.props.setCurrentPage(pageNumber)
-        getUsers(pageNumber, this.props.pageSize).then(data => {
+        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
             this.props.setUsers(data.items)
             this.props.setIsFetching(false)
         })

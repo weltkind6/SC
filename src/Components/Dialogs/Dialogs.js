@@ -14,17 +14,15 @@ const Dialogs = (props) => {
         <Messages message={m.message} id={m.id}/>
     </div>)
     // Functions for Redux
-    let newMessage = React.createRef()
     let addMessage = () => {
-        let text = newMessage.current.value
-        props.addNewMessage(text)
+        props.dispatch({type: 'ADD-MESSAGE'})
     }
-    let onMessageChange = () => {
-        let text = newMessage.current.value
-        props.changeNewMessageText(text)
+    let onMessageChange = (e) => {
+        let text = e.target.value
+        props.dispatch({type: 'CHANGE-NEW-MESSAGE-TEXT', i: text})
     }
     const onPressEnter = e => {
-        if(e.code === 'Enter') {
+        if (e.code === 'Enter') {
             addMessage()
         }
     }
@@ -38,7 +36,7 @@ const Dialogs = (props) => {
                 </div>
                 <div>
                     {messageContainer}
-                    <textarea onKeyDown={onPressEnter} ref={newMessage} onChange={onMessageChange} value={props.messPage.newMessageBody}/>
+                    <textarea onKeyDown={onPressEnter} onChange={onMessageChange}/>
                     <button onClick={addMessage}>Send</button>
                 </div>
             </div>

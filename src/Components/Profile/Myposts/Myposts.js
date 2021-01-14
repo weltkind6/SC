@@ -1,8 +1,7 @@
 import React from 'react'
 import classes from './Myposts.module.css'
 import PostMessage from "./PostMessage/PostMessage";
-import {addPostActionCreator, changePostActionCreator} from "../../../Redux/state";
-
+import {addPostActionCreator, changePostActionCreator} from "../../../Redux/messageReducer";
 
 
 const MyPosts = (props) => {

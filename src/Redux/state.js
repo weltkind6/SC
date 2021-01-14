@@ -4,6 +4,8 @@ import ava2 from '../img/freckle.png'
 import ava3 from '../img/blue.jpg'
 import ava4 from '../img/enot.jpg'
 import ava5 from '../img/chika.jpg'
+import messageReducer from "./messageReducer";
+import dialogsReducer from "./dialogsReducer";
 
 const store = {
     _state: {
@@ -47,59 +49,14 @@ const store = {
     subscribe(observer) {
         this._callSubscriber = observer
     },
-   _callSubscriber() {
+    _callSubscriber() {
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 1,
-                post: this._state.profilePage.newPostText,
-                likesCount: '3'
-            }
-            this._state.profilePage.postData.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._callSubscriber(this._state)
-        }
-        else if (action.type === 'CHANGE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText
-            this._callSubscriber(this._state)
-        }
-        else if (action.type === 'ADD-MESSAGE') {
-            let newMess = {
-                id: '6',
-                message: this._state.messagePage.newMessageBody,
-            }
-            this._state.messagePage.messages.push(newMess)
-            this._state.messagePage.newMessageBody = ''
-            this._callSubscriber(this.state)
-        }
-        else if (action.type === 'CHANGE-NEW-MESSAGE-TEXT') {
-            this._state.messagePage.newMessageBody = action.newMessageText
-            this._callSubscriber(this.state)
-        }
+        this._state.profilePage = dialogsReducer(this._state.profilePage, action)
+        this._state.messagePage = messageReducer(this._state.messagePage, action)
+        this._callSubscriber(this._state)
     },
 }
-export const addPostActionCreator = () => {
-    return {
-        type: 'ADD-POST'
-    }
-}
-export const changePostActionCreator = (text) => {
-    return {
-        type: 'CHANGE-NEW-POST-TEXT', newText: text
-    }
-}
-export const addMessageActionCreator = () => {
-    return {
-        type: 'ADD-MESSAGE'
-    }
-}
-export const changeMessageActionCreator = (text) => {
-    return {
-        type: 'CHANGE-NEW-MESSAGE-TEXT', newMessageText: text
-    }
-}
-
 
 
 window.store = store

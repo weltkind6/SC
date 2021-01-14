@@ -2,7 +2,8 @@ import React from 'react'
 import classes from './Dialogs.module.css'
 import Messages from "./Messages/Messages";
 import Dialogsitem from "./DialogsItem/Dialogsitem";
-import {addMessageActionCreator, changeMessageActionCreator} from "../../Redux/dialogsReducer";
+import {addMessageActionCreator, changeMessageActionCreator} from "../../Redux/messageReducer";
+
 
 
 

@@ -1,8 +1,8 @@
 const ADD_MESSAGE = 'ADD-MESSAGE'
 const CHANGE_NEW_MESSAGE_TEXT = 'CHANGE-NEW-MESSAGE-TEXT'
 
-export const addPostActionCreator = () => ({type: 'ADD-POST'})
-export const changePostActionCreator = text => ({type: 'CHANGE-NEW-POST-TEXT', newText: text})
+export const addMessageActionCreator = () => ({type: 'ADD-MESSAGE'})
+export const changeMessageActionCreator = text => ({type: 'CHANGE-NEW-MESSAGE-TEXT', newMessageText: text})
 
 const messageReducer = (state, action) => {
     switch (action.type) {

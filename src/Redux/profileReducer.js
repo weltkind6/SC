@@ -1,10 +1,11 @@
 const ADD_POST = 'ADD-POST'
 const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT'
 
-export const addMessageActionCreator = () => ({type: 'ADD-MESSAGE'})
-export const changeMessageActionCreator = text => ({type: 'CHANGE-NEW-MESSAGE-TEXT', newMessageText: text})
+export const addPostActionCreator = () => ({type: 'ADD-POST'})
+export const changePostActionCreator = text => ({type: 'CHANGE-NEW-POST-TEXT', newText: text})
 
-const dialogsReducer = (state, action) => {
+
+const profileReducer = (state, action) => {
 
     switch (action.type) {
         case ADD_POST:
@@ -25,4 +26,4 @@ const dialogsReducer = (state, action) => {
     return state
 }
 
-export default dialogsReducer
+export default profileReducer

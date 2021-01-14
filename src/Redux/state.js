@@ -5,7 +5,7 @@ import ava3 from '../img/blue.jpg'
 import ava4 from '../img/enot.jpg'
 import ava5 from '../img/chika.jpg'
 import messageReducer from "./messageReducer";
-import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
 
 const store = {
     _state: {
@@ -52,7 +52,7 @@ const store = {
     _callSubscriber() {
     },
     dispatch(action) {
-        this._state.profilePage = dialogsReducer(this._state.profilePage, action)
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.messagePage = messageReducer(this._state.messagePage, action)
         this._callSubscriber(this._state)
     },

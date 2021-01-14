@@ -2,6 +2,8 @@ import React from 'react'
 import classes from './Dialogs.module.css'
 import Messages from "./Messages/Messages";
 import Dialogsitem from "./DialogsItem/Dialogsitem";
+import {addMessageActionCreator, changeMessageActionCreator} from "../../Redux/state";
+
 
 
 const Dialogs = (props) => {
@@ -15,11 +17,11 @@ const Dialogs = (props) => {
     </div>)
     // Functions for Redux
     let addMessage = () => {
-        props.dispatch({type: 'ADD-MESSAGE'})
+        props.dispatch(addMessageActionCreator())
     }
     let onMessageChange = (e) => {
         let text = e.target.value
-        props.dispatch({type: 'CHANGE-NEW-MESSAGE-TEXT', i: text})
+        props.dispatch(changeMessageActionCreator(text))
     }
     const onPressEnter = e => {
         if (e.code === 'Enter') {
@@ -36,7 +38,7 @@ const Dialogs = (props) => {
                 </div>
                 <div>
                     {messageContainer}
-                    <textarea onKeyDown={onPressEnter} onChange={onMessageChange}/>
+                    <textarea value={props.messPage.newMessageBody} onKeyDown={onPressEnter} onChange={onMessageChange}/>
                     <button onClick={addMessage}>Send</button>
                 </div>
             </div>

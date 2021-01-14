@@ -74,12 +74,31 @@ const store = {
             this._callSubscriber(this.state)
         }
         else if (action.type === 'CHANGE-NEW-MESSAGE-TEXT') {
-            this._state.messagePage.newMessageBody = action.i
+            this._state.messagePage.newMessageBody = action.newMessageText
             this._callSubscriber(this.state)
         }
     },
 }
-
+export const addPostActionCreator = () => {
+    return {
+        type: 'ADD-POST'
+    }
+}
+export const changePostActionCreator = (text) => {
+    return {
+        type: 'CHANGE-NEW-POST-TEXT', newText: text
+    }
+}
+export const addMessageActionCreator = () => {
+    return {
+        type: 'ADD-MESSAGE'
+    }
+}
+export const changeMessageActionCreator = (text) => {
+    return {
+        type: 'CHANGE-NEW-MESSAGE-TEXT', newMessageText: text
+    }
+}
 
 
 

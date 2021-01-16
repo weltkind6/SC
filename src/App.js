@@ -6,6 +6,7 @@ import Profile from "./Components/Profile/Profile";
 import Dialogs from "./Components/Dialogs/Dialogs";
 import Friends from "./Components/Friends/Friends";
 import Music from "./Components/Music/Music";
+import DialogsContainer from "./Components/Dialogs/DialogsContaner";
 
 
 const App = (props) => {
@@ -15,11 +16,9 @@ const App = (props) => {
             <Sidebar/>
             <div className='main-wrapper'>
                 <Route path='/profile'
-                       render={() => <Profile profPage={props.appState.profilePage}
-                                              store={props.store}
-                                              dispatch={props.dispatch}/>}/>
+                       render={() => <Profile store={props.store}/>}/>
                 <Route path='/messages'
-                       render={() => <Dialogs messPage={props.appState.messagePage} dispatch={props.dispatch}/>}/>
+                       render={() => <DialogsContainer store={props.store}/>}/>
                 <Route path='/friends' render={() => <Friends state={props.appState}/>}/>
                 <Route path='/music' render={() => <Music/>}/>
             </div>

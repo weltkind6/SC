@@ -10,11 +10,11 @@ const MyPosts = (props) => {
     let postsElements = props.postData.map(p => <PostMessage message={p.post} id={p.id} likesCount={p.likesCount}/>)
     //Post add
     let addPost = () => {
-        props.dispatch(addPostActionCreator())
+        props.addPost()
     }
     const onPostChange = (e) => {
         let text = e.target.value
-        props.dispatch(changePostActionCreator(text))
+        props.changeNewPost(text)
     }
     const onKeyDown = e => {
         if (e.code === "Enter") {

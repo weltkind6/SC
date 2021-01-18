@@ -2,11 +2,12 @@ import React from 'react'
 import classes from './Dialogs.module.css'
 import Messages from "./Messages/Messages";
 import Dialogsitem from "./DialogsItem/Dialogsitem";
-import {addMessageActionCreator, changeMessageActionCreator} from "../../Redux/messageReducer";
+
 
 
 
 const Dialogs = (props) => {
+    debugger
     let dialogsElements = props.messPage.dialogsData.map(d =>
         <div className={classes.user_block}>
             <Avatars ava={d.img}/>

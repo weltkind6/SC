@@ -1,9 +1,9 @@
 import './App.css';
+import React from 'react'
 import {BrowserRouter, Route} from "react-router-dom";
 import Header from "./Components/Header/Header";
 import Sidebar from "./Components/Siderbar/Sidebar";
 import Profile from "./Components/Profile/Profile";
-import Dialogs from "./Components/Dialogs/Dialogs";
 import Friends from "./Components/Friends/Friends";
 import Music from "./Components/Music/Music";
 import DialogsContainer from "./Components/Dialogs/DialogsContaner";
@@ -16,10 +16,10 @@ const App = (props) => {
             <Sidebar/>
             <div className='main-wrapper'>
                 <Route path='/profile'
-                       render={() => <Profile store={props.store}/>}/>
+                       render={() => <Profile/>}/>
                 <Route path='/messages'
-                       render={() => <DialogsContainer store={props.store}/>}/>
-                <Route path='/friends' render={() => <Friends state={props.appState}/>}/>
+                       render={() => <DialogsContainer/>}/>
+                <Route path='/friends' render={() => <Friends/>}/>
                 <Route path='/music' render={() => <Music/>}/>
             </div>
         </div>

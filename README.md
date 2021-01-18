@@ -1,21 +1,10 @@
 # My trainig project
 
-Lesson #42 Redux
+Lesson #44 Context
 
 В этом уроке было:
 
-1. Установлена библиотека Redux
-2. Добвлен combineReducers (в него вообщем передаются redusers типа: profilePage: profileReducer etc.)
-3. Redux умеет создавать свой собственный store.const store = createStore(reducers) В него передаются редьюсеры.
-4. В редьюсеры передаются нужные части state через initialState который является параметром по дефолту у state
-const reducer = (state = initialState, action) {}
-5. В state от Redux так же есть:
-
-getState() {
-        return this._state
-    },
-    subscribe(observer) {
-        this._callSubscriber = observer
-    },
-
-getState нужен для ображения к state, так как в Редаксе он приватный.
+1. const StoreContext = React.createContext(null). Создается контекст, что бы не протаскивать через props по 100 км
+всё, а компоненты имели доступ к store напрямую.
+2. Все это дело рашается установкой react-redux в который все инкапсулиравоно и сделано удобно.
+3. Контейнерные компонеты оборачиваются в <StoreContext.Consumer> типа они принимают все это дело.

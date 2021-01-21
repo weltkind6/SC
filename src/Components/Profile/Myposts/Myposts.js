@@ -6,7 +6,7 @@ import {addPostActionCreator, changePostActionCreator} from "../../../Redux/prof
 
 
 const MyPosts = (props) => {
-    let postsElements = props.postData.map(p => <PostMessage message={p.post} id={p.id} likesCount={p.likesCount}/>)
+    let postsElements = props.postData.map(p => <PostMessage message={p.post} id={p.id} key={p.id} likesCount={p.likesCount}/>)
     //Post add
     let addPost = () => {
         props.addPost()

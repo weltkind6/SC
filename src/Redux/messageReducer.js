@@ -30,21 +30,32 @@ const initialState = {
 }
 
 const messageReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case ADD_MESSAGE:
-            let newMess = {
+            const newMess = {
                 id: '6',
                 message: state.newMessageBody,
+
             }
-            state.messages.push(newMess)
-            state.newMessageBody = ''
-            break;
+            // Создали объект, и сразу его вернули. Без переменной stateCopy
+            return {
+                ...state,
+                messages: [...state.messages, newMess], //Добавляем аналогом push
+                newMessageBody: ''
+            }
+
+        //stateCopy.messages.push(newMess)
+
         case CHANGE_NEW_MESSAGE_TEXT:
-            state.newMessageBody = action.newMessageText
-            break;
-        default: return state
+            return {
+                ...state,
+                newMessageBody: action.newMessageText
+            }
+
+        default:
+            return state
     }
-    return state
 }
 
 export default messageReducer

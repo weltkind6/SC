@@ -7,8 +7,7 @@ import Dialogsitem from "./DialogsItem/Dialogsitem";
 
 
 const Dialogs = (props) => {
-    debugger
-    let dialogsElements = props.messPage.dialogsData.map(d =>
+    const dialogsElements = props.messPage.dialogsData.map(d =>
         <div className={classes.user_block}>
             <Avatars ava={d.img}/>
             <Dialogsitem name={d.name} id={d.id}/>

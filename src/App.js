@@ -7,6 +7,7 @@ import Profile from "./Components/Profile/Profile";
 import Friends from "./Components/Friends/Friends";
 import Music from "./Components/Music/Music";
 import DialogsContainer from "./Components/Dialogs/DialogsContaner";
+import Bugs from "./Components/Bugs/Bugs";
 
 
 const App = (props) => {
@@ -21,6 +22,7 @@ const App = (props) => {
                        render={() => <DialogsContainer/>}/>
                 <Route path='/friends' render={() => <Friends/>}/>
                 <Route path='/music' render={() => <Music/>}/>
+                <Route path='/bugs' render={() => <Bugs/>}/>
             </div>
         </div>
     );

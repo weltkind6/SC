@@ -9,7 +9,7 @@ const ADD_MESSAGE = 'ADD-MESSAGE'
 const CHANGE_NEW_MESSAGE_TEXT = 'CHANGE-NEW-MESSAGE-TEXT'
 
 export const addMessageActionCreator = () => ({type: 'ADD-MESSAGE'})
-export const changeMessageActionCreator = text => ({type: 'CHANGE-NEW-MESSAGE-TEXT', newMessageText: text})
+export const changeMessageActionCreator = text => ({type: 'CHANGE-NEW-MESSAGE-TEXT', text})
 
 const initialState = {
     messages: [
@@ -50,7 +50,7 @@ const messageReducer = (state = initialState, action) => {
         case CHANGE_NEW_MESSAGE_TEXT:
             return {
                 ...state,
-                newMessageBody: action.newMessageText
+                newMessageBody: action.text
             }
 
         default:

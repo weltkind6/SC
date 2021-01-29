@@ -1,12 +1,7 @@
 const ADD_BUG = 'ADD-BUG'
 const CHANGE_NEW_BUG = 'CHANGE-NEW-BUG'
-export const addNewBugActionCreator = () => {
-    return {type: ADD_BUG}
-}
-export const changeNewBugActionCreator = text => {
-    return {type: CHANGE_NEW_BUG, newBugText: text}
-}
-
+export const addNewBugActionCreator = () => ({type: ADD_BUG})
+export const changeNewBugActionCreator = text => ({type: CHANGE_NEW_BUG, text})
 
 const initialState = {
     bugsList: [
@@ -26,15 +21,15 @@ const bugsReducer = (state = initialState, action) => {
                 id: 4
             }
             const stateCopy = {...state}
-            stateCopy.bugsList = [...state.bugsList]
-            stateCopy.bugsList.push(newBug)
+            stateCopy.bugsList = [...state.bugsList, newBug]
+            //stateCopy.bugsList.push(newBug)
             stateCopy.newBugName = ''
             return stateCopy
         }
         case CHANGE_NEW_BUG: {
             const stateCopy = {...state}
             stateCopy.bugsList = [...state.bugsList]
-            stateCopy.newBugName = action.newBugText //????
+            stateCopy.newBugName = action.text
             return stateCopy
         }
         default: return state

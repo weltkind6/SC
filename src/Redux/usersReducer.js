@@ -1,26 +1,63 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 
-export const followActionCreator = () => ({type: FOLLOW})
-export const unFollowActionCreator = () => ({type: UNFOLLOW})
+export const followActionCreator = (userID) => ({type: FOLLOW, userID})
+export const unFollowActionCreator = (userID) => ({type: UNFOLLOW, userID})
 
 const initialState = {
-    bugsList: [
+    usersList: [
         {follow: true, fullName: 'Dmitriy', id: 1, status: 'Boss', location: {city: 'Minsk', country: 'Belarus'}},
         {follow: true, fullName: 'Katuha', id: 2, status: 'Friend', location: {city: 'Moscow', country: 'Russia'}},
-        {follow: false, fullName: 'Artyom', id: 3, status: 'Worker', location: {city: 'Prague', country: 'Czech-Republic'}},
+        {
+            follow: false,
+            fullName: 'Artyom',
+            id: 3,
+            status: 'Worker',
+            location: {city: 'Prague', country: 'Czech-Republic'}
+        },
         {follow: true, fullName: 'Vikky', id: 4, status: 'Driver', location: {city: 'Paris', country: 'France'}},
-        {follow: false, fullName: 'Santey', id: 5, status: 'Director', location: {city: 'Geneva', country: 'Switzerland '}},
+        {
+            follow: false,
+            fullName: 'Santey',
+            id: 5,
+            status: 'Director',
+            location: {city: 'Geneva', country: 'Switzerland '}
+        },
     ],
 
 }
 
 
-const bugsReducer = (state = initialState, action) => {
+const usersReducer = (state = initialState, action) => {
     switch (action.type) {
+        case FOLLOW:
+            return {
+                ...state,
+                usersList: state.usersList.map(u => {
+                    if(u.id === action.userID) {
+                        return {...u, follow: true}
 
-        default: return state
+                    }
+                    return u
+                })
+
+            }
+        case UNFOLLOW:
+            return {
+                ...state,
+                usersList: state.usersList.map(u => {
+                    if(u.id === action.userID) {
+                        return {...u, follow: false}
+
+                    }
+                    return u
+                })
+
+            }
+
+        default:
+            return state
     }
 }
 
-export default bugsReducer
+export default usersReducer

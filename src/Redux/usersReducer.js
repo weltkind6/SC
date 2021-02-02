@@ -1,29 +1,15 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
+const SET_USERS = 'SET-USERS'
 
-export const followActionCreator = (userID) => ({type: FOLLOW, userID})
-export const unFollowActionCreator = (userID) => ({type: UNFOLLOW, userID})
+export const followActionCreator = userID => ({type: FOLLOW, userID})
+export const unFollowActionCreator = userID => ({type: UNFOLLOW, userID})
+export const setUsersActionCreator = usersList => ({type: SET_USERS, usersList})
 
 const initialState = {
     usersList: [
-        {follow: true, fullName: 'Dmitriy', id: 1, status: 'Boss', location: {city: 'Minsk', country: 'Belarus'}},
-        {follow: true, fullName: 'Katuha', id: 2, status: 'Friend', location: {city: 'Moscow', country: 'Russia'}},
-        {
-            follow: false,
-            fullName: 'Artyom',
-            id: 3,
-            status: 'Worker',
-            location: {city: 'Prague', country: 'Czech-Republic'}
-        },
-        {follow: true, fullName: 'Vikky', id: 4, status: 'Driver', location: {city: 'Paris', country: 'France'}},
-        {
-            follow: false,
-            fullName: 'Santey',
-            id: 5,
-            status: 'Director',
-            location: {city: 'Geneva', country: 'Switzerland '}
-        },
-    ],
+
+    ]
 
 }
 
@@ -54,6 +40,11 @@ const usersReducer = (state = initialState, action) => {
                 })
 
             }
+        case SET_USERS: {
+            return { ...state, usersList: [ ...state.usersList, ...action.usersList ]}
+        }
+
+
 
         default:
             return state

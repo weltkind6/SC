@@ -1,12 +1,20 @@
 import React from 'react'
 import {connect} from "react-redux";
 import Users from "./Users";
-import {followActionCreator, setUsersActionCreator, unFollowActionCreator} from "../../Redux/usersReducer";
+import {
+    followActionCreator,
+    setCurrentPageActionCreator,
+    setUsersActionCreator,
+    unFollowActionCreator
+} from "../../Redux/usersReducer";
 
 
 const mapStateToProps = state => {
     return {
-        users: state.usersPage.usersList
+        users: state.usersPage.usersList,
+        pageSize: state.usersPage.pageSize,
+        totalUsersCount: state.usersPage.totalUsersCount,
+        currentPage: state.usersPage.currentPage
     }
 }
 // хавает весь state целиком и возвращает только те данные, которые нужны
@@ -20,6 +28,9 @@ const mapDispatchToProps = dispatch => {
        },
        setUsers: usersList => {
            dispatch(setUsersActionCreator(usersList))
+       },
+       setCurrentPage: pageNumber => {
+           dispatch(setCurrentPageActionCreator(pageNumber))
        }
    }
 }

@@ -1,9 +1,10 @@
 import React from 'react'
 
-const  Profileinfo = () => {
+
+const  Profileinfo = props => {
     return (
         <div>
-            <div>IMG (avatar)</div>
+            <img src={props.profile.photos.large} alt=""/>
             <div>Ava + desc</div>
         </div>
     )

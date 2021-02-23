@@ -10,6 +10,10 @@ const reducers = combineReducers({
     usersPage: usersReducer,
     bugsPage: bugsReducer})
 
+
+
 const store = createStore(reducers)
+window.store = store
 
 export default store
+

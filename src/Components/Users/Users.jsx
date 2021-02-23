@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from "./Users.module.css";
 import noava from "../../img/noava.svg";
+import {NavLink} from "react-router-dom";
 
 
 const Users = props => {
@@ -25,7 +26,9 @@ const Users = props => {
                     <div>
                         <div>{u.name}</div>
                         <div>{u.id}</div>
-                        <img src={u.photos.small != null ? u.photos.small : noava} alt="" className={classes.avatar}/>
+                        <NavLink to={'profile/' + u.id}>
+                            <img src={u.photos.small != null ? u.photos.small : noava} alt="" className={classes.avatar}/>
+                        </NavLink>
                         <div>
                             {u.follow ?
                                 <button onClick={() => props.goUnfollow(u.id)}>Unfollow</button> :

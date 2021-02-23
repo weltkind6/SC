@@ -1,4 +1,5 @@
 import React from 'react'
+import Preloader from "../common/Preloader";
 
 const Bugs = props => {
     const newBugsList = props.bugsList.bugsList.map(b => <div>{b.name}</div>)

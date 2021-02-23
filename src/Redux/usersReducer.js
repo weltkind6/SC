@@ -4,11 +4,11 @@ const SET_USERS = 'SET-USERS'
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 
-export const followActionCreator = userID => ({type: FOLLOW, userID})
-export const unFollowActionCreator = userID => ({type: UNFOLLOW, userID})
-export const setUsersActionCreator = usersList => ({type: SET_USERS, usersList})
-export const setCurrentPageActionCreator = currentPage => ({type: SET_CURRENT_PAGE, currentPage})
-export const setToggleActionCreator = isLoading => ({type: TOGGLE_IS_FETCHING, isLoading})
+export const goFollow = userID => ({type: FOLLOW, userID})
+export const goUnFollow = userID => ({type: UNFOLLOW, userID})
+export const setUsers = usersList => ({type: SET_USERS, usersList})
+export const setCurrentPage = currentPage => ({type: SET_CURRENT_PAGE, currentPage})
+export const toggleIsLoading = isLoading => ({type: TOGGLE_IS_FETCHING, isLoading})
 
 const initialState = {
     usersList: [],

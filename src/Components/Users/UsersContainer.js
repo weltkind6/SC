@@ -1,20 +1,12 @@
 import React from 'react'
 import {connect} from "react-redux";
-import {
-    followActionCreator,
-    setCurrentPageActionCreator, setToggleActionCreator,
-    setUsersActionCreator,
-    unFollowActionCreator
-} from "../../Redux/usersReducer";
 import axios from "axios";
 import Users from "./Users";
-import preloader from '../../img/200.gif'
-import classes from './Users.module.css'
 import Preloader from "../common/Preloader";
+import {goFollow, goUnFollow, setCurrentPage, setUsers, toggleIsLoading} from "../../Redux/usersReducer";
 
-class UsersAPI extends React.Component {
 
-
+class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsLoading(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage} &count=${this.props.pageSize}`)
@@ -36,7 +28,7 @@ class UsersAPI extends React.Component {
 
     render() {
         return <>
-            {this.props.isLoading ? <Preloader /> : null}
+            {this.props.isLoading ? <Preloader/> : null}
             <Users
                 totalUsersCount={this.props.totalUsersCount}
                 pageSize={this.props.pageSize}
@@ -53,6 +45,7 @@ class UsersAPI extends React.Component {
 }
 
 const mapStateToProps = state => {
+    // хавает весь state целиком и возвращает только те данные, которые нужны
     return {
         users: state.usersPage.usersList,
         pageSize: state.usersPage.pageSize,
@@ -61,29 +54,10 @@ const mapStateToProps = state => {
         isLoading: state.usersPage.isLoading
     }
 }
-// хавает весь state целиком и возвращает только те данные, которые нужны
-const mapDispatchToProps = dispatch => {
-    return {
-        goFollow: userId => {
-            dispatch(followActionCreator(userId))
-        },
-        goUnfollow: userId => {
-            dispatch(unFollowActionCreator(userId))
-        },
-        setUsers: usersList => {
-            dispatch(setUsersActionCreator(usersList))
-        },
-        setCurrentPage: pageNumber => {
-            dispatch(setCurrentPageActionCreator(pageNumber))
-        },
-        toggleIsLoading: isLoading => {
-            dispatch(setToggleActionCreator(isLoading))
-        }
-    }
-}
+
+export default connect(mapStateToProps,
+    {goFollow, goUnFollow, setUsers, setCurrentPage, toggleIsLoading,}
+)(UsersContainer)
 
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPI)
 
-
-export default UsersContainer

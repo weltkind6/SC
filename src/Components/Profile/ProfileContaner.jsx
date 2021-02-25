@@ -5,9 +5,6 @@ import {connect} from "react-redux";
 import {setUserProfile} from "../../Redux/profileReducer";
 
 
-
-
-
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
@@ -19,13 +16,13 @@ class ProfileContainer extends React.Component {
 
     render() {
         return (
-            <Profile {...this.props} />
+            <Profile {...this.props} profile={this.props.profile}/>
         );
     }
 }
 
 const mapStateToProps = state => ({
-
+    profile: state.profilePage.profile
 })
 
 export default connect(mapStateToProps, {setUserProfile})(ProfileContainer)

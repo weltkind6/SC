@@ -17,7 +17,7 @@ const App = (props) => {
             <Header/>
             <Sidebar/>
             <div className='main-wrapper'>
-                <Route path='/profile/:userId'
+                <Route path='/profile/'
                        render={() => <ProfileContainer/>}/>
                 <Route path='/messages'
                        render={() => <DialogsContainer/>}/>

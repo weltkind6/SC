@@ -10,11 +10,12 @@ export const setUsers = usersList => ({type: SET_USERS, usersList})
 export const setCurrentPage = currentPage => ({type: SET_CURRENT_PAGE, currentPage})
 export const toggleIsLoading = isLoading => ({type: TOGGLE_IS_FETCHING, isLoading})
 
+
 const initialState = {
     usersList: [],
     pageSize: 5,
-    totalUsersCount: 36,
-    currentPage: 4,
+    totalUsersCount: 1000,
+    currentPage: 95,
     isLoading: false
 }
 
@@ -51,6 +52,7 @@ const usersReducer = (state = initialState, action) => {
         case SET_CURRENT_PAGE: {
             return { ...state, currentPage: action.currentPage}
         }
+
         case TOGGLE_IS_FETCHING: {
             return {...state, isLoading: action.isLoading}
         }

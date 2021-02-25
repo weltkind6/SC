@@ -23,6 +23,7 @@ class UsersContainer extends React.Component {
             .then(response => {
                 this.props.toggleIsLoading(false)
                 this.props.setUsers(response.data.items)
+
             })
     }
 
@@ -35,7 +36,7 @@ class UsersContainer extends React.Component {
                 currentPage={this.props.currentPage}
                 changePageHandler={this.changePageHandler}
                 users={this.props.users}
-                goUnfollow={this.props.goUnfollow}
+                goUnFollow={this.props.goUnFollow}
                 goFollow={this.props.goFollow}
             />
         </>

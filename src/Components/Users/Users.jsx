@@ -31,7 +31,7 @@ const Users = props => {
                         </NavLink>
                         <div>
                             {u.follow ?
-                                <button onClick={() => props.goUnfollow(u.id)}>Unfollow</button> :
+                                <button onClick={() => props.goUnFollow(u.id)}>Unfollow</button> :
                                 <button onClick={() => props.goFollow(u.id)}>Follow</button>}
 
                         </div>

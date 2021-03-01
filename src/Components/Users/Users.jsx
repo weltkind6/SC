@@ -2,6 +2,7 @@ import React from 'react'
 import classes from "./Users.module.css";
 import noava from "../../img/noava.svg";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 
 const Users = props => {
@@ -30,9 +31,41 @@ const Users = props => {
                             <img src={u.photos.small != null ? u.photos.small : noava} alt="" className={classes.avatar}/>
                         </NavLink>
                         <div>
-                            {u.follow ?
-                                <button onClick={() => props.goUnFollow(u.id)}>Unfollow</button> :
-                                <button onClick={() => props.goFollow(u.id)}>Follow</button>}
+                            {u.followed
+                                ? <button onClick={() => {
+
+                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                        withCredentials: true,
+                                        headers: {
+                                            "API-KEY": "cb31ddc1-309a-457d-8004-8b6b8183c6de"
+                                        }
+                                    })
+                                        .then(response => {
+                                            if (response.data.resultCode === 0) {
+                                                props.goUnFollow(u.id);
+                                            }
+                                        });
+
+
+
+                                }}>unFollow</button>
+                                : <button onClick={() => {
+
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                        withCredentials: true,
+                                        headers: {
+                                            "API-KEY": "cb31ddc1-309a-457d-8004-8b6b8183c6de"
+                                        }
+                                    })
+                                        .then(response => {
+                                            if (response.data.resultCode === 0) {
+                                                props.goFollow(u.id);
+                                                console.log('Hello!')
+                                            }
+                                        });
+
+
+                                }}>Follow</button>}
 
                         </div>
                     </div>)}

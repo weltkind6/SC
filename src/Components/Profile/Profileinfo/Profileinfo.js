@@ -6,7 +6,7 @@ const  Profileinfo = props => {
         <div>
             <div>{props.profile.aboutMe}</div>
             {/*<img src={props.profile.photos.small} alt=""/>*/}
-            <img src={props.profile.photos.large} alt=""/>
+            {/*<img src={props.profile.photos.large} alt=""/>*/}
             <div>Ava + desc</div>
         </div>
     )
